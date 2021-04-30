@@ -1,0 +1,106 @@
+<div class="uk-child-width-1-2" uk-grid style="margin-left:0px;background-color:aquamarine">
+    <div class="uk-width-1-2 uk-align-center" style="margin-top: 38px;" >
+        <p class="uk-h4">{{thongBao}}</p>
+    </div>
+    <div class="uk-width-1-2 uk-align-center" style="padding-right: 25px;">
+        <form class="uk-search uk-width-1-1" method="POST" action="/layout/timKiemBaiViet">
+            <span class="uk-search-icon-flip uk-padding-small" type="submit" uk-search-icon></span>
+            <input class="uk-search-input uk-padding-small" name="noiDung" placeholder="Nhập nội dung tìm kiếm" type="search">
+            {{!-- <button type="submit">Tìm kiếm</button> --}}
+         </form>
+    </div>
+</div>
+{{!-- <div class="uk-tile uk-tile-primary uk-padding-small">
+    <p class="uk-h4">{{thongBao}}</p>
+</div> --}}
+<div class="uk-child-width-1-2@s uk-grid-match"uk-grid style="margin-top:0px">
+    {{#each baiViet}}
+    <div>
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+            {{!-- <tile> --}}
+            <div class="" uk-grid>
+                {{#if this.idNguoiDung.avatar}}
+                    <div class="uk-width-1-6" uk-lightbox="animation: fade">
+                        <a class="uk-inline" href="{{this.idNguoiDung.avatar}}">
+                            <img src="{{this.idNguoiDung.avatar}}" style="width:50px; height: 50px; border-radius: 100px; max-height:50px; max-width:50px; overflow:hidden;">
+                        </a>
+                    </div>
+                {{else}}
+                    <div class="uk-width-1-6" uk-lightbox="animation: fade">
+                        <a class="uk-inline" href="https://static.yeah1.com/uploads/editors/27/2020/03/21/JaZBMzV14fzRI4vBWG8jymplSUGSGgimkqtJakOV.jpeg">
+                            <img style="width:50px; height: 50px; border-radius: 100px; max-height:50px; max-width:50px; overflow:hidden;" src="https://static.yeah1.com/uploads/editors/27/2020/03/21/JaZBMzV14fzRI4vBWG8jymplSUGSGgimkqtJakOV.jpeg">
+                        </a>
+                    </div>
+                {{/if}}
+                <div class="uk-width-5-6 ">
+                    <a class="uk-text-bold" href="/layout/nguoiDungChiTiet/{{this.idNguoiDung._id}}">{{this.idNguoiDung.hoTen}}</a>
+                    {{#if this.trangThai}}
+                    <div>Chỉ mình tôi</div>
+                    {{else}}
+                    <div>Công khai</div>
+                    {{/if}}
+                </div>
+            </div>
+            {{!-- </tile> --}}
+            {{!-- <noidung> --}}
+            <p>
+                {{this.noiDung}}
+            </p>
+            {{!-- </noidung> --}}
+            {{!-- <slideshow> --}}
+                {{#if this.linkAnh}}
+                    <div class="uk-child-width-1-1@m" uk-grid uk-lightbox="animation: fade" uk-slideshow="animation: fade">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+                            <ul class="uk-slideshow-items">
+                                {{#each this.linkAnh}}
+                                <li>
+                                    <a class="uk-inline" href="{{this}}">
+                                        <img src="{{this}}" alt="" style="height: 350px; width: 500px;  object-fit: cover;  ">
+                                    </a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{else}}
+                    <div class="uk-child-width-1-1@m" uk-grid uk-lightbox="animation: fade" uk-slideshow="animation: fade">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+                            <ul class="uk-slideshow-items">
+                                {{#each this.linkAnh}}
+                                <li>
+                                    <a class="uk-inline"
+                                        href="https://1.bp.blogspot.com/-OrsWZOTxrII/XoBZE9eA7mI/AAAAAAAAafo/Ss31otGfbfwhzN_UUUJrH8O4TCAyskTkACLcBGAsYHQ/s1600/Hinh-anh-chibi-de-thuong%2B%252817%2529.jpg">
+                                        <img src="https://1.bp.blogspot.com/-OrsWZOTxrII/XoBZE9eA7mI/AAAAAAAAafo/Ss31otGfbfwhzN_UUUJrH8O4TCAyskTkACLcBGAsYHQ/s1600/Hinh-anh-chibi-de-thuong%2B%252817%2529.jpg"
+                                            alt="" style="height: 350px; width: 500px;  object-fit: cover;  ">
+                                    </a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+                
+            {{!-- </slideshow> --}}
+            <div class="uk-text-center" uk-grid>
+                <div class="uk-width-1-4 uk-inline-clip uk-transition-toggle " style="color: red">
+                    <a href=""  uk-icon="icon: heart"></a>    {{this.luotThich.length}}
+                </div>
+                <div class="uk-width-1-4" style="color: blue">
+                    <a href="/layout/baiVietChiTiet/{{this._id}}" uk-icon="icon: warning"></a> {{this.baoCao}}
+                </div>
+                <div class="uk-width-1-4" style="color: red">
+                    {{#if this.daXoa}}
+                    <a href="/layout/khoiPhucBaiViet/{{this._id}}" uk-icon="refresh"></a>
+                    {{else}}
+                    <a href="/layout/xoaBaiViet/{{this._id}}" uk-icon="trash"></a>
+                    {{/if}}
+                    
+                </div>
+                <div class="uk-width-1-4" style="color: blue">
+                    <a href="/layout/baiVietChiTiet/{{this._id}}" uk-icon="icon: more-vertical"></a>
+                </div>
+            </div>  
+        </div>
+    </div>
+    {{/each}}
+</div>

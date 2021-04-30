@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safaco</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/css/uikit.min.css" />
+    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div  class="uk-container">
+        <div>
+            <nav class="uk-navbar-container" uk-navbar>
+                <div class="uk-navbar-center">
+                    <ul class="uk-navbar-nav uk-tab">
+                        <li class="">
+                            <a href="/layout/trangChu">Bài viết</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="/layout/danhSachBaiVietDaXoa">Bài viết bị xóa</a></li>
+                                    <li><a href="/layout/baiVietBiBaoCao">Bài viết bị báo cáo</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="/layout/matHang">Mặt hàng</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class=""><a href="/layout/DSduyetBai">Duyệt Mặt hàng</a></li>
+                                    <li class=""><a href="/layout/danhSachMatHangChan">Mặt hàng bị chặn</a></li>
+                                    <li class=""><a href="/layout/matHangBiBaoCao">Mặt hàng bị báo cáo</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="/layout/DSNguoiDung">Người dùng</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="uk-container">{{{body}}}</div>
+    </div> 
+</body>
+</html>

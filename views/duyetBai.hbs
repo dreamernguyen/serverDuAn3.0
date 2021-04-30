@@ -1,0 +1,38 @@
+<div class="uk-tile uk-tile-primary uk-padding-small">
+    <p class="uk-h4">{{thongBao}}</p>
+</div>
+<div class="uk-child-width-1-3@s uk-grid-match" uk-grid>
+    {{#each ds}}
+    <div>
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-inline-clip uk-transition-toggle">
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+                <ul class="uk-slideshow-items">
+                    {{#each this.linkAnh}}
+                    <li>
+                        <img src="{{this}}" alt="">
+                    </li>
+                    {{/each}}
+                </ul>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+                    uk-slideshow-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+                    uk-slideshow-item="next"></a>
+            </div>
+            <h3 class="uk-card-title">{{this.tieuDe}}</h3>
+            <p class="uk-text-bold uk-text-danger">Giá: {{this.giaBan}} đồng</p>
+            <div class="uk-child-width-1-1@s">
+                <div class="">
+                    Trạng thái: {{#if this.duyetMatHang}}Đã Duyệt{{else}}Chưa Duyệt <a class="uk-button uk-button-primary "
+                        href="/layout/duyetBai/{{this._id}}">Duyệt</a>{{/if}}
+                </div>
+                <h class="uk-text-light">{{this.diaChi}}</h>
+                <div class="uk-text-light">{{this.thoiGianTao}}</div>
+                <div class="uk-text-right">{{this.baoCao}}</div>
+            </div>
+            <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                <a class="uk-h4 uk-margin-remove uk-text-danger" href="/layout/matHangChiTiet/{{this._id}}">Chi tiết</a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

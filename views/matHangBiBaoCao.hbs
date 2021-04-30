@@ -1,0 +1,25 @@
+<tile class="uk-tile uk-tile-primary uk-padding-small uk-width-1-1 uk-text-center">{{thongBao}}</tile>
+<table class="uk-table uk-table-hover uk-table-divider">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th class="uk-text-center">Người Dùng</th>
+            <th>ID Bài Viết</th>
+            <th class="uk-text-center">Số Lượng Báo Cáo</th>
+            <th class="uk-text-center">Tùy Chọn</th>
+        </tr>
+    </thead>
+    {{#each dsMatHang}}
+    <tbody>
+        <tr>
+            <td>{{inc @index}}</td>
+            <td class="uk-text-center">{{this.idNguoiDung.hoTen}}</td>
+            <td>{{this._id}}</td>
+            <td class="uk-text-center">{{this.baoCao}}</td>
+            <td class="uk-text-center">
+                <a class="uk-button uk-button-default" href="/layout/matHangChiTiet/{{this._id}}">Chi tiết</a>
+            </td>
+        </tr>
+    </tbody>
+    {{/each}}
+</table>

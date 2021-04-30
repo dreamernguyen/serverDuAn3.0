@@ -1,0 +1,156 @@
+<div class="uk-tile uk-tile-primary uk-padding-small">
+    <p class="uk-h4">{{thongBao}}</p>
+</div>
+<div class="uk-card uk-card-default uk-width-1-1@m">
+    <div class="uk-card-header">
+        <div class="" uk-grid>
+            {{#if nguoiDung.avatar}}
+            <div class="uk-width-1-4@m uk-text-center">
+                <img class="" style="width: 150px; height: 150px; border-radius: 100px;"  src="{{nguoiDung.avatar}}">
+            </div>
+            {{else}}
+            <div class="uk-width-1-4@m uk-text-center">
+                <img class="" style="width: 150px; height: 150px; border-radius: 100px;"  src="https://static.yeah1.com/uploads/editors/27/2020/03/21/JaZBMzV14fzRI4vBWG8jymplSUGSGgimkqtJakOV.jpeg">
+            </div>
+            {{/if}}
+            <div class="uk-width-3-4@m uk-padding-remove uk-margin-remove" uk-grid>
+                <div class="uk-width-3-4">
+                    <h3 class="uk-card-title">{{nguoiDung.hoTen}}</h3>
+                    {{#if nguoiDung.diaChi}}
+                    <p class="uk-text-meta uk-margin-remove-top">Địa Chỉ: {{nguoiDung.diaChi}}</p>
+                    {{else}}
+                    <p class="uk-text-meta uk-margin-remove-top">Địa chỉ chưa cập nhật</p>
+                    {{/if}}
+                </div>
+                <div class="uk-width-1-4 uk-text-right uk-text-top uk-inline">
+                    <a href="" uk-icon="icon: more-vertical"></a>
+                    <div uk-dropdown="pos: bottom-right">
+                        <ul class="uk-nav uk-dropdown-nav uk-text-left">
+                            <li><a href="/layout/xoaNguoiDung/{{nguoiDung._id}}">Xóa người dùng</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="uk-text-center">{{nguoiDung.tieuSu}}</p>
+    </div>
+    <div class="uk-padding-small">
+        <div>
+            <div class="uk-padding-small uk-text-center uk-child-width-1-2" uk-grid>
+                <div class="uk-width-1-2@m   uk-text-bold uk-padding-small " style="color: red;">
+                        Theo dõi: {{theoDoi}}
+                </div>
+                <div class="uk-width-1-2@m   uk-text-bold uk-padding-small " style="color: black;">
+                        Được theo dõi: {{duocTheoDoi}}
+                </div>
+            </div>
+        </div>
+        <div class="uk-text-center">
+            <div class="uk-width-1-1 uk-margin-remove">
+                <p class="uk-margin-remove uk-padding-small">Tham gia: {{thoiGianTao}}</p>
+                {{#if nguoiDung.soDienThoai}}
+                <p class="uk-margin-remove uk-padding-small">Số điện thoại: 0{{nguoiDung.soDienThoai}}</p>
+                {{else}}
+                <p class="uk-margin-remove uk-padding-small">Số điện thoại: Chưa cập nhật</p>
+                {{/if}}
+                {{#if nguoiDung.email}}
+                <p class="uk-margin-remove uk-padding-small">Email: {{nguoiDung.email}}</p>
+                {{else}}
+                <p class="uk-margin-remove uk-padding-small">Email: Chưa cập nhật</p>
+                {{/if}}
+                {{#if nguoiDung.ngaySinh}}
+                <p class="uk-margin-remove uk-padding-small">Sinh nhật {{nguoiDung.ngaySinh}}</p>
+                {{else}}
+                <p class="uk-margin-remove uk-padding-small">Sinh nhật: Chưa cập nhật</p>
+                {{/if}}
+                {{#if nguoiDung.gioiTinh}}
+                <p class="uk-margin-remove uk-padding-small">Giới tính: Nam</p>
+                {{else}}
+                <p class="uk-margin-remove uk-padding-small">Giới tính: Nữ</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="uk-card-footer">
+        
+    </div>
+</div>
+<div>
+    <div class="uk-child-width-1-2@s uk-grid-match" id="toggle-usage" uk-grid>
+        {{#each dsBaiViet}}
+        <div>
+            <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                {{!-- <tile> --}}
+                    <div class="" uk-grid>
+                        {{#if this.idNguoiDung.avatar}}
+                        <div class="uk-width-1-6" uk-lightbox="animation: fade">
+                            <a class="uk-inline" href="{{this.idNguoiDung.avatar}}">
+                                <img src="{{this.idNguoiDung.avatar}}" class=""
+                                    style="width:50px; height: 50px; border-radius: 100px; max-height:50px; max-width:50px; overflow:hidden;">
+                            </a>
+                        </div>
+                        {{else}}
+                        <div class="uk-width-1-6" uk-lightbox="animation: fade">
+                            <a class="uk-inline"
+                                href="https://scr.vn/wp-content/uploads/2020/07/H%C3%ACnh-%C4%91%E1%BA%A1i-di%E1%BB%87n-FB-avatar-tr%E1%BA%AFng.png">
+                                <img class="" style="width: 150px; height: 150px; border-radius: 100px;"
+                                    src="https://scr.vn/wp-content/uploads/2020/07/H%C3%ACnh-%C4%91%E1%BA%A1i-di%E1%BB%87n-FB-avatar-tr%E1%BA%AFng.png">
+                            </a>
+                        </div>
+                        {{/if}}
+                        <div class="uk-width-5-6">
+                            <a class="uk-text-lead"
+                                href="/layout/nguoiDungChiTiet/{{this.idNguoiDung._id}}">{{this.idNguoiDung.hoTen}}</a>
+                            {{#if this.trangThai}}
+                            <div>Chỉ mình tôi</div>
+                            {{else}}
+                            <div>Công khai</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{!--
+                </tile> --}}
+                {{!-- <noidung> --}}
+                    <p>
+                        {{this.noiDung}}
+                    </p>
+                    {{!--
+                </noidung> --}}
+                {{!-- <slideshow> --}}
+                    <div class="uk-child-width-1-1@m" uk-grid uk-lightbox="animation: fade" uk-slideshow="animation: fade">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+                            <ul class="uk-slideshow-items">
+                                {{#each this.linkAnh}}
+                                <li>
+                                    <a class="uk-inline" href="{{this}}">
+                                        <img src="{{this}}" alt=""
+                                            style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+                                    </a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    {{!--
+                </slideshow> --}}
+                <div class="uk-text-center" uk-grid>
+                    <div class="uk-width-1-3 uk-inline-clip uk-transition-toggle">
+                        <a href="" uk-icon="icon: heart"></a>
+                    </div>
+                    <div class="uk-width-1-3">
+                        <a href="" uk-icon="icon: commenting"></a>
+                    </div>
+                    <div class="uk-width-1-3">
+                        {{#if this.daXoa}}
+                        <a href="/layout/khoiPhucBaiViet/{{this._id}}" uk-icon="refresh"></a>
+                        {{else}}
+                        <a href="/layout/xoaBaiViet/{{this._id}}" uk-icon="trash"></a>
+                        {{/if}}
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
