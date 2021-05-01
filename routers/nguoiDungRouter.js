@@ -28,7 +28,7 @@ router.post("/huyTheoDoi", huyTheoDoi);
 router.post("/chinhSuaThongTin/:id",chinhSuaThongTin);
 router.post("/doiMatKhau/:id",doiMatKhau);
 router.post('/capNhatAvatar/:id', doiAvatar);
-router.get("/xemNguoiDung/:id", xemNguoiTheoDoi);
+router.get("/xemNguoiTheoDoi/:id", xemNguoiTheoDoi);
 router.get('/thongTinChiTiet/:id', nguoiDungChiTiet);
 router.post('/checkSoDienThoai/:soDienThoai', checkSoDienThoai);
 router.post('/quenMatKhau', QuenMatKhau);
