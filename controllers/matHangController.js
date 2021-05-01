@@ -117,7 +117,7 @@ export async function danhSachToiBan(req, res) {
   try {
     const danhSachMatHang = await MatHang.find({
       idNguoiDung: req.params.id, daXoa: false
-    }).populate("idNguoiDung nguoiQuanTam");
+    }).populate("idNguoiDung nguoiQuanTam").sort({thoiGianTao : -1});
     res.send({
       danhSachMatHang: danhSachMatHang,
     });
