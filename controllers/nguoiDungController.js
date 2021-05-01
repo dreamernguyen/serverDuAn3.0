@@ -268,7 +268,7 @@ export async function xemNguoiTheoDoi(req, res) {
     );
     if (nguoiDung) {
       res.send({
-        thongBao: 'Không tìm thấy người dùng',
+        thongBao: 'Có dữ liệu',
         dangTheoDoi: nguoiDung.dangTheoDoi,
         duocTheoDoi: nguoiDung.duocTheoDoi,
       });
