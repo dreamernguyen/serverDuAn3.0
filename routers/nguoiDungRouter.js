@@ -33,5 +33,5 @@ router.post('/capNhatAvatar/:id', doiAvatar);
 router.get("/xemNguoiTheoDoi/:id", xemNguoiTheoDoi);
 router.get('/thongTinChiTiet/:id', nguoiDungChiTiet);
 router.post('/checkSoDienThoai/:soDienThoai', checkSoDienThoai);
-router.post('/quenMatKhau/:id', quenMatKhau);
+router.post('/quenMatKhau', quenMatKhau);
 export default router;
