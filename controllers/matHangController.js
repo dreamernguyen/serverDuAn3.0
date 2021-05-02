@@ -82,7 +82,7 @@ export async function chinhSuaMatHang(req, res) {
 export async function danhSachMatHang(req, res) {
   try {
     await MatHang.find({ daDuyet: true, daXoa: false })
-      .populate("idNguoiDung nguoiQuanTam")
+      .populate("idNguoiDung nguoiQuanTam").sort({thoiGianTao : -1})
       .then((danhSachMatHang) => {
         res.send({
           danhSachMatHang: danhSachMatHang,
