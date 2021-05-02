@@ -14,7 +14,7 @@ import {
   nguoiDungChiTiet,
   checkSoDienThoai,
   themSoDienThoai,
-  QuenMatKhau,
+  quenMatKhau,
 } from '../controllers/nguoiDungController.js';
 
 const router = express.Router();
@@ -33,5 +33,5 @@ router.post('/capNhatAvatar/:id', doiAvatar);
 router.get("/xemNguoiTheoDoi/:id", xemNguoiTheoDoi);
 router.get('/thongTinChiTiet/:id', nguoiDungChiTiet);
 router.post('/checkSoDienThoai/:soDienThoai', checkSoDienThoai);
-router.post('/quenMatKhau', QuenMatKhau);
+router.post('/quenMatKhau/:id', quenMatKhau);
 export default router;
