@@ -315,7 +315,6 @@ export async function checkSoDienThoai(req, res) {
 }
 export async function themSoDienThoai(req, res) {
   try {
-    const matKhau = req.body.matKhau;
     const soDienThoai = req.body.soDienThoai;
     const nguoiDung = await NguoiDung.findById(req.params.id);
     if (!nguoiDung) {
@@ -327,7 +326,6 @@ export async function themSoDienThoai(req, res) {
         { _id: req.params.id },
         {
           $set: {
-            matKhau: matKhau,
             soDienThoai : soDienThoai
           },
         }
