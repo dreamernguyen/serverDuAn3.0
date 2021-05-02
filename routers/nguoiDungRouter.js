@@ -13,6 +13,7 @@ import {
   xemNguoiTheoDoi,
   nguoiDungChiTiet,
   checkSoDienThoai,
+  themSoDienThoai,
   QuenMatKhau,
 } from '../controllers/nguoiDungController.js';
 
@@ -27,6 +28,7 @@ router.post("/theoDoi", theoDoi);
 router.post("/huyTheoDoi", huyTheoDoi);
 router.post("/chinhSuaThongTin/:id",chinhSuaThongTin);
 router.post("/doiMatKhau/:id",doiMatKhau);
+router.post("/themSoDienThoai/:id",themSoDienThoai);
 router.post('/capNhatAvatar/:id', doiAvatar);
 router.get("/xemNguoiTheoDoi/:id", xemNguoiTheoDoi);
 router.get('/thongTinChiTiet/:id', nguoiDungChiTiet);
