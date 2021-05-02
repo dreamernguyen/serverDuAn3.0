@@ -341,9 +341,9 @@ export async function themSoDienThoai(req, res) {
 }
 export async function quenMatKhau(req, res){
   try {
-    const idNguoiDung = req.params.id;
+    const soDienThoai = req.body.soDienThoai;
     const matKhauMoi = req.body.matKhauMoi;
-    await NguoiDung.updateOne({_id: idNguoiDung}, {$set: {matKhau : matKhauMoi}});
+    await NguoiDung.updateOne({soDienThoai: soDienThoai}, {$set: {matKhau : matKhauMoi}});
     res.send({thongBao: "Đã cập nhật mật khẩu thành công"})
   } catch (error) {
     console.log(error);
