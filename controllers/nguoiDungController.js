@@ -339,9 +339,9 @@ export async function themSoDienThoai(req, res) {
     throw new Error(`Thêm số điện thoại thất bại ! \nChi tiết lỗi : ${error}`);
   }
 }
-export async function QuenMatKhau(req, res){
+export async function quenMatKhau(req, res){
   try {
-    const idNguoiDung = req.body.idNguoiDung;
+    const idNguoiDung = req.params.id;
     const matKhauMoi = req.body.matKhauMoi;
     await NguoiDung.updateOne({_id: idNguoiDung}, {$set: {matKhau : matKhauMoi}});
     res.send({thongBao: "Đã cập nhật mật khẩu thành công"})
