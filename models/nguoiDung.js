@@ -15,7 +15,7 @@ const nguoiDungSchema = mongoose.Schema(
     },
     tieuSu: {type: String, default: 'Thành viên mới'},
     ngaySinh: {type: String},
-    gioiTinh: {type: String},
+    gioiTinh: {type: String,default : 'Nam'},
     dangTheoDoi: [
       {
         type: mongoose.Schema.Types.ObjectId,
