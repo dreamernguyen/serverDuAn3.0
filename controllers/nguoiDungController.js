@@ -343,8 +343,6 @@ export async function quenMatKhau(req, res){
   try {
     const soDienThoai = req.body.soDienThoai;
     const matKhauMoi = req.body.matKhauMoi;
-    console.log(req.body.soDienThoai)
-    console.log(req.body.matKhauMoi)
     const nguoiDung = await NguoiDung.findOne({soDienThoai : soDienThoai});
      if (!nguoiDung) {
       res.send({
