@@ -18,7 +18,7 @@ export async function binhLuan(req, res){
         res.send({
           thongBao: "Bình luận thành công"
         })
-        if(baiViet.idNguoiDung !== nguoiDung._id){
+        if(String(baiViet.idNguoiDung) !== String(nguoiDung._id)){
           const thongBaoMoi = new ThongBao({
             idNguoiDung: baiViet.idNguoiDung,
             idTruyXuat: baiViet._id,
