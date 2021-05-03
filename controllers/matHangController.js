@@ -66,6 +66,7 @@ export async function chinhSuaMatHang(req, res) {
           giaBan: req.body.giaBan,
           tieuDe: req.body.tieuDe,
           linkAnh: req.body.linkAnh,
+          diaChi : req.body.diaChi,
           daDuyet: false,
         },
       };
