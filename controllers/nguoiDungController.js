@@ -343,8 +343,25 @@ export async function quenMatKhau(req, res){
   try {
     const soDienThoai = req.body.soDienThoai;
     const matKhauMoi = req.body.matKhauMoi;
-    await NguoiDung.updateOne({soDienThoai: soDienThoai}, {$set: {matKhau : matKhauMoi}});
-    res.send({thongBao: "Đã cập nhật mật khẩu thành công"})
+    const nguoiDung = await NguoiDung.findOne({soDienThoai : soDienThoai});
+     if (!nguoiDung) {
+      res.send({
+        thongBao: "Người dùng không tồn tại !",
+      });
+    } else {
+      await NguoiDung.updateOne(
+        { soDienThoai: soDienThoai },
+        {
+          $set: {
+            matKhau : matKhauMoi
+          },
+        }
+      );
+      res.send({
+        thongBao: "Lấy lại mật khẩu thành công !",
+      });
+    }
+  
   } catch (error) {
     console.log(error);
     throw new Error(`Lỗi cập nhật mật khẩu \n Lỗi chi tiết ${error}`);
