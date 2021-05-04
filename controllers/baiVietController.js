@@ -301,9 +301,7 @@ export async function baoCaoBaiViet(req, res) {
         });
         await thongBaoUser2.save();
         await thongBaoUser1.save();
-        res.send({
-          thongBao: `Bài viết ${baiViet.noiDung} đã bị khóa`,
-        });
+      
       } else {
         await BaiViet.updateOne(
           {_id: idBaiViet},
