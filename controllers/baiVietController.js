@@ -282,34 +282,58 @@ export async function baoCaoBaiViet(req, res) {
     const baiViet = await BaiViet.findById(idBaiViet);
     const nguoiBaoCao = await NguoiDung.findById(idNguoiBaoCao);
     if (baiViet) {
-      await BaiViet.updateOne(
-        { _id: idBaiViet },
-        {
-          $push: { anBaiVoi: idNguoiBaoCao },
-          $inc: { baoCao: 1 },
+      if (baiViet.baoCao > 3) {
+        await BaiViet.updateOne(
+          {_id: idBaiViet},
+          {$inc: {baoCao: 1}, daXoa: true}
+        );
+        const thongBaoUser1 = new ThongBao({
+          idNguoiDung: baiViet.idNguoiDung,
+          idTruyXuat: idBaiViet,
+          loaiThongBao: 'BaiViet',
+          noiDung: `Bài viết ${baiViet.noiDung} của bạn đã bị khóa`,
+        });
+        const thongBaoUser2 = new ThongBao({
+          idNguoiDung: idNguoiBaoCao,
+          idTruyXuat: idNguoiBaoCao,
+          loaiThongBao: 'PhanHoiBaoCao',
+          noiDung: `Cảm ơn bạn đã báo cáo bài viết này`,
+        });
+        await thongBaoUser2.save();
+        await thongBaoUser1.save();
+        res.send({
+          thongBao: `Bài viết ${baiViet.noiDung} đã bị khóa`,
+        });
+      } else {
+        await BaiViet.updateOne(
+          {_id: idBaiViet},
+          {
+            $push: {anBaiVoi: idNguoiBaoCao},
+            $inc: {baoCao: 1},
+          }
+        );
+        if (nguoiBaoCao) {
+          const thongBaoAdmin = new ThongBao({
+            idNguoiDung: nguoiBaoCao._id,
+            idTruyXuat: baiViet._id,
+            loaiThongBao: 'BaoCaoBaiViet',
+            noiDung: noiDungBaoCao,
+          });
+          thongBaoAdmin.save();
+          const thongBaoUser = new ThongBao({
+            idNguoiDung: nguoiBaoCao._id,
+            idTruyXuat: nguoiBaoCao._id,
+            loaiThongBao: 'PhanHoiBaoCao',
+            noiDung: `Cảm ơn bạn đã báo cáo bài viết!\nChúng tôi sẽ xử lý nếu bài viết vi phạm !`,
+          });
+          thongBaoUser.save();
         }
-      );       
-      if (nguoiBaoCao) {
-        const thongBaoAdmin = new ThongBao({
-          idNguoiDung: nguoiBaoCao._id,
-          idTruyXuat: baiViet._id,
-          loaiThongBao: "BaoCaoBaiViet",
-          noiDung: noiDungBaoCao,
-        });
-        thongBaoAdmin.save();
-        const thongBaoUser = new ThongBao({
-          idNguoiDung: nguoiBaoCao._id,
-          idTruyXuat: nguoiBaoCao._id,
-          loaiThongBao: "PhanHoiBaoCao",
-          noiDung: `Cảm ơn bạn đã báo cáo bài viết!\nChúng tôi sẽ xử lý nếu bài viết vi phạm !`,
-        });
-        thongBaoUser.save();
       }
       res.send({
         thongBao: `Báo cáo bài viết thành công !`,
       });
     } else {
-      res.send({ thongBao: "Không tìm thấy bài viết !" });
+      res.send({thongBao: 'Không tìm thấy bài viết !'});
     }
   } catch (error) {
     console.log(error);
