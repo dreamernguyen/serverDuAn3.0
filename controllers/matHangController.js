@@ -256,7 +256,7 @@ export async function boQuanTam(req, res) {
 export async function baoCaoMatHang(req, res) {
   try {
     const idMatHang = req.body.idMatHang;
-    const idNguoiBaoCao = req.body.idNguoiBaoCao;
+    const idNguoiBaoCao = await NguoiDung.findById(req.body.idNguoiBaoCao);
     const noiDungBaoCao = req.body.noiDungBaoCao;
     const matHang = await MatHang.findById({_id: idMatHang});
     if (matHang) {
