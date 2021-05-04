@@ -122,7 +122,7 @@ export async function BaiVietBiGo(req, res) {
   try {
     const dsbaiViet = await BaiViet.find({
       daXoa: true,
-    }).populate('idNguoiDung');
+    }).populate('idNguoiDung','hoTen');
     if (dsbaiViet) {
       dsbaiViet.sort(function (a, b) {
         return b.thoiGianTao - a.thoiGianTao;
