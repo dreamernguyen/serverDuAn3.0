@@ -69,14 +69,13 @@ const io = new Server(server);
 io.on('connection', (socket) => {
   console.log(`connect ${socket.id}`);
   socket.on('testab', (hihi) => {
-    console.log('Đã kết nối thành công');
-    console.log(hihi);
+    
   });
 
  
   const changeStream = TinNhan.watch([{$match: {operationType: 'insert'}}]);
   changeStream.on('change', (change) => {
-    console.log('Có tin nhắn mới');
+    
 
     TinNhan.findOne({_id: change.fullDocument._id})
       .populate('idNguoiGui idNguoiNhan')
@@ -88,7 +87,7 @@ io.on('connection', (socket) => {
   ThongBao.watch([{$match: {operationType: 'insert'}}]).on(
     'change',
     (change) => {
-      console.log('Có thông báo mới');
+      
 
       ThongBao.findOne({_id: change.fullDocument._id})
         .populate('idNguoiDung')
