@@ -282,9 +282,9 @@ export async function baoCaoBaiViet(req, res) {
     const baiViet = await BaiViet.findById(idBaiViet);
     const nguoiBaoCao = await NguoiDung.findById(idNguoiBaoCao);
     if (baiViet) {
-      if (baiViet.baoCao > 3) {
+      if (baiViet.baoCao > 2) {
         await BaiViet.updateOne(
-          {_id: idBaiViet},
+          {_id: baiViet._id},
           {$inc: {baoCao: 1}, daXoa: true}
         );
         const thongBaoUser1 = new ThongBao({
