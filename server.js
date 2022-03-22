@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 const databaseURL =
-  'mongodb+srv://nhannbt:nhanne@cluster0-hw1yh.mongodb.net/dbSafaco?retryWrites=true&w=majority';
+'mongodb+srv://nhannbt:thanhnhan-6@nhannbt.6gzgv.mongodb.net/dbSafaco?retryWrites=true&w=majority';
 
 app.engine(
   '.hbs',
